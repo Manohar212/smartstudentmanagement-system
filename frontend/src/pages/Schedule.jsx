@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, ChevronLeft, ChevronRight, List, BookOpen } from 'lucide-react';
 
 export function Schedule() {
+  const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const [scheduleData, setScheduleData] = useState([]);
 
   useEffect(() => {
@@ -10,7 +11,7 @@ export function Schedule() {
         const userId = localStorage.getItem('userId');
         if (!userId) return;
 
-        const response = await fetch(`http://localhost:5000/api/schedule?userId=${userId}`);
+        const response = await fetch(`${BASE_URL}/api/schedule?userId=${userId}`);
         if (response.ok) {
           const data = await response.json();
           setScheduleData(data);

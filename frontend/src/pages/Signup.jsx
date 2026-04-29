@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { GraduationCap } from 'lucide-react';
 
 export function Signup({ onSignup }) {
+  const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -36,7 +37,7 @@ export function Signup({ onSignup }) {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
+      const response = await fetch(`${BASE_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

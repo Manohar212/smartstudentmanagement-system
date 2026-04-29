@@ -20,7 +20,9 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 
 // Database Connection
@@ -52,11 +54,11 @@ if (process.env.NODE_ENV === 'production') {
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error("ERROR:", err.message);
-  res.status(500).json({ error: err.message });
+  res.status(500).json({ reply: "AI response" });
 });
 
 const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
 server.on('error', (error) => {
@@ -66,3 +68,12 @@ server.on('error', (error) => {
   }
   throw error;
 });
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+

@@ -3,6 +3,7 @@ import { Calendar, FileText } from 'lucide-react';
 import { cn } from '../lib/utils.js';
 
 export function Assignments() {
+  const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const [filter, setFilter] = useState('All');
   const [assignmentsData, setAssignmentsData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ export function Assignments() {
         const userId = localStorage.getItem('userId');
         if (!userId) { setLoading(false); return; }
 
-        const response = await fetch(`http://localhost:5000/api/assignments?userId=${userId}`);
+        const response = await fetch(`${BASE_URL}/api/assignments?userId=${userId}`);
         if (response.ok) {
           const data = await response.json();
           setAssignmentsData(data);
@@ -30,7 +31,7 @@ export function Assignments() {
   // PUT /api/assignments/:id — mark an assignment as Completed
   const markComplete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/assignments/${id}`, {
+      const response = await fetch(`${BASE_URL}/api/assignments/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: 'Completed' }),

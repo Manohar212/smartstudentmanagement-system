@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, CheckCircle2, XCircle, Clock, ArrowRight } from 'lucide-react';
 
 export function Attendance() {
+  const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -11,7 +12,7 @@ export function Attendance() {
         const userId = localStorage.getItem('userId');
         if (!userId) { setLoading(false); return; }
 
-        const response = await fetch(`http://localhost:5000/api/attendance?userId=${userId}`);
+        const response = await fetch(`${BASE_URL}/api/attendance?userId=${userId}`);
         if (response.ok) {
           const data = await response.json();
           setRecords(data);

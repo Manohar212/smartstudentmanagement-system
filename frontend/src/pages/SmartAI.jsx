@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { HelpCircle, BarChart3, FileText, ChevronRight, Send, ArrowRight, BookOpen, Loader2 } from 'lucide-react';
 
 // Call the backend AI route — API key never touches the frontend
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 async function callAI(message) {
-  const res = await fetch('http://localhost:5000/api/ai', {
+  const res = await fetch(`${BASE_URL}/api/ai`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message }),
