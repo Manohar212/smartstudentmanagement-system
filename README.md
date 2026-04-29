@@ -1,5 +1,9 @@
 # Smart Student Management System
 
+* Full-stack web app using React, Node.js, MongoDB
+* Includes AI-powered Smart Assistant (Gemini API)
+* Features: Dashboard, Attendance, Assignments, Schedule
+
 ## Setup Instructions
 
 ### 1. Install Dependencies
