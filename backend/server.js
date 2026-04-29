@@ -43,13 +43,6 @@ app.use('/api/schedule', scheduleRoutes);
 app.use('/api/ai', aiRoutes);
 
 // Serve static React build in production
-if (process.env.NODE_ENV === 'production') {
-  const distPath = path.join(__dirname, 'dist');
-  app.use(express.static(distPath));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(distPath, 'index.html'));
-  });
-}
 
 // Global Error Handler
 app.use((err, req, res, next) => {
