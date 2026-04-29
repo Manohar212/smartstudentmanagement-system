@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS custom properties for inline style usage (e.g. style={{ color: 'var(--color-brand-red)' }}) */
+:root {
+  --color-brand-red:     #E53935;
+  --color-brand-red-hover: #D32F2F;
+  --color-bg-beige:      #F5F1EB;
+  --color-surface:       #FFFFFF;
+  --color-border:        #E8E3DD;
+  --color-text-main:     #1C1917;
+  --color-text-muted:    #78716C;
+  --color-success-bg:    #ECFDF5;
+  --color-success-text:  #10B981;
+  --color-error-bg:      #FEF2F2;
+  --color-error-text:    #EF4444;
+}
+
+body {
+  background-color: var(--color-bg-beige);
+  color: var(--color-text-main);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
